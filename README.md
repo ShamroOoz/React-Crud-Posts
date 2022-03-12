@@ -1,5 +1,5 @@
-
 ## React-Crud-Posts
+
 ## Installation
 
 Install my-project with npm
@@ -8,23 +8,20 @@ Install my-project with npm
   npm install my-project
   cd my-project
 ```
-    
+
 ## Tech Stack
 
 **Client:** React, TailwindCSS React-Router-v6
 
-
-
 ## Usage/Examples
 
 ```javascript
-import Component from 'my-project'
+import Component from "my-project";
 
 function App() {
-  return <Component />
+  return <Component />;
 }
 ```
-
 
 ## Features
 
@@ -33,15 +30,12 @@ function App() {
 - Delete Post
 - Update
 
-
 ## Appendix
 
 Any additional information goes here
-
 
 ## Live
 
 See live demo
 
-[Click me](https://github.com/matiassingers/awesome-readme)
-
+[Click me](https://react-crud-application-shamroz.netlify.app/)
