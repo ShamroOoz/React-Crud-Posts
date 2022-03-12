@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="text-gray-600 body-font">
-      <div className=" w-full px-5 py-3 mx-auto flex items-center sm:flex-row flex-col fixed bottom-0 bg-slate-500/60">
+      <div
+        className=" w-full px-5 py-3  flex items-center sm:flex-row flex-col fixed
+             inset-x-0
+             bottom-0 bg-slate-500/60"
+      >
         <Link
           to={"/"}
           className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
