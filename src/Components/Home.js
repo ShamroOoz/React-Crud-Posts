@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Post from "Pages/Post";
 import { useDataContext } from "Context/GlobalProvider";
 import SearchBar from "Components/SearchBar";
 
 const Home = () => {
   const { Posts } = useDataContext();
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const filteredResults = Posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+    setSearchResults(filteredResults);
+  }, [Posts, search]);
 
   return (
     <section className="text-gray-600 body-font sm:mb-24 mb-40">
@@ -18,11 +30,11 @@ const Home = () => {
           </h1>
         </div>
         <div>
-          <SearchBar />
+          <SearchBar search={search} setSearch={setSearch} />
         </div>
         <div className="flex flex-wrap -m-4">
-          {Posts.length ? (
-            Posts?.map((value) => <Post key={value.id} value={value} />)
+          {searchResults.length ? (
+            searchResults?.map((value) => <Post key={value.id} value={value} />)
           ) : (
             <div className="text-lg text-red-400">Nothing to display....</div>
           )}

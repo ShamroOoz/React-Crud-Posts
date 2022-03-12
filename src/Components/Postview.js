@@ -12,7 +12,7 @@ const Postview = () => {
   useEffect(() => {
     let isActive = true;
     const fetchMyAPI = async () => {
-      let response = await getpostByid(+id);
+      let response = await getpostByid(id);
       setpostData(response);
     };
     isActive && fetchMyAPI();
@@ -20,7 +20,7 @@ const Postview = () => {
   }, [getpostByid, id]);
 
   const deletepostListner = async () => {
-    await deletepostByid(+id);
+    await deletepostByid(id);
     navigate("/", { replace: true });
   };
   return (

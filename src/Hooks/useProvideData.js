@@ -15,11 +15,19 @@ const useProvideData = () => {
     setPosts(finalPosts);
     return;
   };
+
+  // delete the specifice post by id
+  const createNewpost = async (postData) => {
+    setPosts((prev) => [postData, ...prev]);
+    return;
+  };
+
   // Return the user object and auth methods
   return {
     Posts,
     getpostByid,
     deletepostByid,
+    createNewpost,
   };
 };
 

@@ -1,6 +1,6 @@
 export const Data = [
   {
-    id: 1,
+    id: "1",
     title: "10% Happier by Dan Harris",
     datetime: "July 01, 2021 11:17:36 AM",
     summary:
@@ -8,7 +8,7 @@ export const Data = [
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!",
   },
   {
-    id: 2,
+    id: "2",
     title: "The 10X Rule by Grant Cardone",
     datetime: "July 01, 2021 11:17:36 AM",
     summary:
@@ -16,7 +16,7 @@ export const Data = [
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!",
   },
   {
-    id: 3,
+    id: "3",
     title: "A Technique for Producing Ideas by James Webb Young",
     datetime: "July 01, 2021 11:17:36 AM",
     summary:
@@ -24,7 +24,7 @@ export const Data = [
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!",
   },
   {
-    id: 4,
+    id: "4",
     title: "Adapt by Tim Harford",
     datetime: "July 01, 2021 11:17:36 AM",
     summary:
