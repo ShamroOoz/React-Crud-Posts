@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./Components/Layout";
+import Layout from "Pages/Layout";
 
 const App = () => {
   return (
