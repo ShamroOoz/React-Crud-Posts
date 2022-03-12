@@ -1,8 +1,10 @@
 import React from "react";
 import Post from "Pages/Post";
-import { Data } from "Assests/Data";
+import { useDataContext } from "Context/GlobalProvider";
 
 const Home = () => {
+  const { Posts } = useDataContext();
+
   return (
     <section className="text-gray-600 body-font sm:mb-24 mb-40">
       <div className="container px-5 mt-8 mx-auto">
@@ -15,8 +17,8 @@ const Home = () => {
           </h1>
         </div>
         <div className="flex flex-wrap -m-4">
-          {Data.length ? (
-            Data?.map((value) => <Post key={value.id} value={value} />)
+          {Posts.length ? (
+            Posts?.map((value) => <Post key={value.id} value={value} />)
           ) : (
             <div className="text-lg text-red-400">Nothing to display....</div>
           )}

@@ -1,7 +1,8 @@
 import React from "react";
 import { UserIcon, ArrowRightIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
-const Post = ({ value: { title, summary } }) => {
+const Post = ({ value: { id, title, summary } }) => {
   return (
     <div className="p-4 md:w-1/2">
       <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
@@ -14,11 +15,14 @@ const Post = ({ value: { title, summary } }) => {
           </h2>
         </div>
         <div className="flex-grow">
-          <p className="leading-relaxed text-base">{summary}</p>
-          <a href="/" className="mt-3 text-indigo-500 inline-flex items-center">
+          <p className="leading-relaxed text-base ">{summary}</p>
+          <Link
+            to={`posts/${id}`}
+            className="mt-3 text-indigo-500 inline-flex items-center "
+          >
             Learn More
             <ArrowRightIcon className="w-4 h-4 ml-2" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
