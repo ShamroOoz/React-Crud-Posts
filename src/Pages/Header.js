@@ -3,6 +3,14 @@ import { AnnotationIcon, ArrowRightIcon } from "@heroicons/react/solid";
 import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
+  const isActive = ({ isActive }) =>
+    [
+      isActive ? "mr-5 hover:text-gray-500" : "mr-5 hover:text-indigo-500",
+      isActive ? "text-indigo-500" : null,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -15,17 +23,17 @@ const Header = () => {
           <span className="ml-3 text-xl">React Blog Post</span>
         </Link>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <NavLink className="mr-5 hover:text-gray-900" to="/">
+          <NavLink className={isActive} to="/">
             Home
           </NavLink>
-          <NavLink className="mr-5 hover:text-gray-900" to="about">
+          <NavLink className={isActive} to="about">
             About
           </NavLink>
-          <NavLink className="mr-5 hover:text-gray-900" to="contact">
+          <NavLink className={isActive} to="contact">
             Contact
           </NavLink>
         </nav>
-        <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+        <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-500 rounded text-base mt-4 md:mt-0">
           Login
           <ArrowRightIcon className="w-4 h-4 ml-1" />
         </button>
