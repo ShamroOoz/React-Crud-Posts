@@ -19,8 +19,6 @@ const Login = () => {
   const { signin } = useAuth();
   let { current: from } = useRef(location.state?.from?.pathname || "/");
 
-  console.log(from);
-
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -66,7 +64,7 @@ const Login = () => {
       setUser("");
       setPwd("");
       setMatchPwd("");
-      console.log(from);
+
       navigate(from, { replace: true });
     } catch (err) {
       console.log(err.message);

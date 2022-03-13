@@ -40,7 +40,7 @@ const Header = () => {
 
         {user ? (
           <>
-            <NavLink className={isActive} to="profile">
+            <NavLink className={isActive} to={`profile/${user?.username}`}>
               Profile
             </NavLink>
             <button

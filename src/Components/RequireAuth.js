@@ -5,7 +5,6 @@ export default function RequireAuth({ children }) {
   let { user } = useAuth();
   let location = useLocation();
 
-  console.log(user);
   if (!user) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them

@@ -30,9 +30,11 @@ function App() {
 - Delete Post
 - Update
 
-## Appendix
+## Login credentials
 
-Any additional information goes here
+| UserName  | Password    |
+| --------- | ----------- |
+| shamroz73 | Shamroz@123 |
 
 ## Live
 

@@ -23,7 +23,7 @@ const App = () => {
         <Route path="posts/createpost" element={<CreatePost />} />
         <Route path="login" element={<Login />} />
         <Route
-          path="profile"
+          path={`profile/:usename`}
           element={
             <RequireAuth>
               <Profile />{" "}
