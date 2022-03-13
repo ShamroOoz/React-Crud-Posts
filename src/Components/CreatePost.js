@@ -1,29 +1,18 @@
 import React, { useState, useReducer } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDataContext } from "Context/GlobalProvider";
 import { format } from "date-fns";
-
-const formReducer = (state, event) => {
-  if (event.reset) {
-    return {
-      title: "",
-      summary: 0,
-      body: "",
-    };
-  }
-  return {
-    ...state,
-    [event.name]: event.value,
-  };
-};
-const generateId = () =>
-  `${performance.now()}${Math.random().toString().slice(5)}`.replace(".", "");
+import { formReducer, generateId } from "Reducer/PostReducer";
 
 const CreatePost = () => {
-  const [submitting, setSubmitting] = useState(false);
-  const [formData, setFormData] = useReducer(formReducer, {});
-  const { createNewpost } = useDataContext();
+  let location = useLocation();
   const navigate = useNavigate();
+  const { createNewpost, updatepost } = useDataContext();
+  const [submitting, setSubmitting] = useState(false);
+  const [formData, setFormData] = useReducer(
+    formReducer,
+    location.state ? location.state.value : {}
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,7 +21,13 @@ const CreatePost = () => {
     setTimeout(() => {
       setSubmitting(false);
       const datetime = format(new Date(), "MMMM dd, yyyy pp");
-      createNewpost({ ...formData, id: generateId(), datetime });
+      location.state
+        ? updatepost({
+            ...formData,
+            id: location.state.value.id,
+            datetime,
+          })
+        : createNewpost({ ...formData, id: generateId(), datetime });
       setFormData({
         reset: true,
       });
@@ -54,7 +49,7 @@ const CreatePost = () => {
           <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
             Create New Post
           </h2>
-          {submitting && <div>lOADING......</div>}
+          {submitting && <div className=" p-4 text-red-500">LOADING......</div>}
           <form onSubmit={handleSubmit}>
             <div className="relative mb-4">
               <label
@@ -106,7 +101,7 @@ const CreatePost = () => {
                 disabled={submitting}
                 className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
-                Create
+                {location?.state ? "Update" : "Create"}
               </button>
               <Link
                 to={"/"}

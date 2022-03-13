@@ -16,7 +16,9 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="posts/:id" element={<Postview />} />
+        <Route path="posts/updatepost" element={<CreatePost />} />
         <Route path="posts/createpost" element={<CreatePost />} />
+
         {/* catch all */}
         <Route path="*" element={<Notfound />} />
       </Route>

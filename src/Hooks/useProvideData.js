@@ -11,9 +11,14 @@ const useProvideData = () => {
 
   // delete the specifice post by id
   const deletepostByid = async (id) => {
-    let finalPosts = Posts.filter((p) => p.id !== id);
-    setPosts(finalPosts);
-    return;
+    return setPosts((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  // update the specifice post by id
+  const updatepost = async (updatePost) => {
+    return setPosts((prev) =>
+      prev.map((post) => (post.id === updatePost.id ? { ...updatePost } : post))
+    );
   };
 
   // delete the specifice post by id
@@ -28,6 +33,7 @@ const useProvideData = () => {
     getpostByid,
     deletepostByid,
     createNewpost,
+    updatepost,
   };
 };
 

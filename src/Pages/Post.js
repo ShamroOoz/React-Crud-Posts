@@ -1,8 +1,14 @@
 import React from "react";
-import { UserIcon, ArrowRightIcon } from "@heroicons/react/outline";
+
+import {
+  UserIcon,
+  ArrowRightIcon,
+  RefreshIcon,
+} from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
-const Post = ({ value: { id, title, summary } }) => {
+const Post = ({ value: { id, title, summary, body } }) => {
+  ///
   return (
     <div className="p-4 md:w-1/2">
       <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
@@ -16,13 +22,23 @@ const Post = ({ value: { id, title, summary } }) => {
         </div>
         <div className="flex-grow">
           <p className="leading-relaxed text-base ">{summary}</p>
-          <Link
-            to={`posts/${id}`}
-            className="mt-3 text-indigo-500 inline-flex items-center "
-          >
-            Learn More
-            <ArrowRightIcon className="w-4 h-4 ml-2" />
-          </Link>
+          <div className="flex justify-between flex-wrap">
+            <Link
+              to={`posts/${id}`}
+              className="mt-3 text-indigo-500 inline-flex items-center "
+            >
+              Learn More
+              <ArrowRightIcon className="w-4 h-4 ml-2" />
+            </Link>
+            <Link
+              to={`posts/updatepost`}
+              state={{ value: { id, title, summary, body } }}
+              className="mt-3 text-indigo-500 inline-flex items-center "
+            >
+              Update
+              <RefreshIcon className="w-4 h-4 ml-2" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
