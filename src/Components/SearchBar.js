@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { SearchIcon, ArrowRightIcon } from "@heroicons/react/solid";
 import { useNavigate } from "react-router-dom";
+import useDebounce from "Hooks/useDebounce";
 
-const SearchBar = ({ search, setSearch }) => {
+const SearchBar = ({ setSearch }) => {
   let navigate = useNavigate();
+
+  const [Searchvalue, setSearchvalue] = useState("");
+  useDebounce(() => setSearch(Searchvalue), 1000, [Searchvalue]);
+
   return (
     <div className=" container mx-auto  p-3 flex justify-between items-center flex-wrap">
       <div>
@@ -23,8 +28,8 @@ const SearchBar = ({ search, setSearch }) => {
             type="search"
             name="search"
             placeholder="Search Posts"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={Searchvalue}
+            onChange={(e) => setSearchvalue(e.target.value)}
           />
           <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
             <SearchIcon className="text-gray-600 h-4 w-4 fill-current cursor-pointer" />

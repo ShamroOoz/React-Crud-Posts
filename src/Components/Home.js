@@ -30,7 +30,7 @@ const Home = () => {
           </h1>
         </div>
         <div>
-          <SearchBar search={search} setSearch={setSearch} />
+          <SearchBar setSearch={setSearch} />
         </div>
         <div className="flex flex-wrap -m-4">
           {searchResults.length ? (
