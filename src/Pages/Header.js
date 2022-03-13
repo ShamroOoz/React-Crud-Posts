@@ -1,8 +1,12 @@
 import React from "react";
 import { AnnotationIcon, ArrowRightIcon } from "@heroicons/react/solid";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useAuth } from "Context/AuthProvider";
 
 const Header = () => {
+  let navigate = useNavigate();
+  const { user, signout } = useAuth();
+
   const isActive = ({ isActive }) =>
     [
       isActive ? "mr-5 hover:text-gray-500" : "mr-5 hover:text-indigo-500",
@@ -33,10 +37,29 @@ const Header = () => {
             Contact
           </NavLink>
         </nav>
-        <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-500 rounded text-base mt-4 md:mt-0">
-          Login
-          <ArrowRightIcon className="w-4 h-4 ml-1" />
-        </button>
+
+        {user ? (
+          <>
+            <NavLink className={isActive} to="profile">
+              Profile
+            </NavLink>
+            <button
+              onClick={() => signout(() => navigate("/"))}
+              className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:text-white hover:bg-indigo-500 rounded text-base mt-4 md:mt-0"
+            >
+              Logout
+              <ArrowRightIcon className="w-4 h-4 ml-1" />
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => navigate("login")}
+            className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:text-white hover:bg-indigo-500 rounded text-base mt-4 md:mt-0"
+          >
+            Login
+            <ArrowRightIcon className="w-4 h-4 ml-1" />
+          </button>
+        )}
       </div>
     </header>
   );

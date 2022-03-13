@@ -6,7 +6,10 @@ import Home from "Components/Home";
 import About from "Components/About";
 import Contact from "Components/Contact";
 import Postview from "Components/Postview";
-import CreatePost from "./Components/CreatePost";
+import CreatePost from "Components/CreatePost";
+import Login from "Components/Login";
+import Profile from "Components/Profile";
+import RequireAuth from "Components/RequireAuth";
 
 const App = () => {
   return (
@@ -18,6 +21,15 @@ const App = () => {
         <Route path="posts/:id" element={<Postview />} />
         <Route path="posts/updatepost" element={<CreatePost />} />
         <Route path="posts/createpost" element={<CreatePost />} />
+        <Route path="login" element={<Login />} />
+        <Route
+          path="profile"
+          element={
+            <RequireAuth>
+              <Profile />{" "}
+            </RequireAuth>
+          }
+        />
 
         {/* catch all */}
         <Route path="*" element={<Notfound />} />
